@@ -1,4 +1,5 @@
 import { cac } from 'cac';
+import shell from 'shelljs';
 
 const cli = cac('vp');
 
@@ -7,7 +8,10 @@ cli.command('build', '');
 cli.command('preview', '');
 cli.command('lib', '');
 cli.command('run', '');
-cli.command('lint', '');
+cli.command('lint', '')
+  .action(() => {
+    shell.exec('./node_modules/.bin/oxlint');
+  });
 cli.command('fmt', '');
 cli.command('test', '');
 cli.command('bench', '');
